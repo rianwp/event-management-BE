@@ -25,9 +25,10 @@ export class AuthService {
       profilePicture,
       phoneNumber,
       referralCodeUsed,
-    } = req;
-
-    this.validationService.validate(AuthValidation.REGISTER, req);
+    } = this.validationService.validate(
+      AuthValidation.REGISTER,
+      req,
+    ) as RegisterRequest;
 
     const existingUser = await this.prismaService.users.findFirst({
       where: { email },
@@ -109,7 +110,10 @@ export class AuthService {
   }
 
   async login(req: LoginRequest) {
-    const { email, password } = req;
+    const { email, password } = this.validationService.validate(
+      AuthValidation.LOGIN,
+      req,
+    ) as LoginRequest;
 
     const user = await this.prismaService.users.findFirst({
       where: { email },
