@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { LoginRequest, RegisterRequest } from 'src/model/auth.model';
+import { LoginRequest, RegisterRequest } from '../model/auth.model';
 import { PrismaService } from 'src/common/prisma/prisma.service';
 import { ValidationService } from 'src/common/validation/validation.service';
 import { PasswordService } from './password/password.service';
