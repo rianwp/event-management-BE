@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode } from '@nestjs/common';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginRequest, RegisterRequest } from 'src/model/auth.model';
 
@@ -6,7 +6,7 @@ import { LoginRequest, RegisterRequest } from 'src/model/auth.model';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Get('/register')
+  @Post('/register')
   @HttpCode(200)
   async register(@Body() req: RegisterRequest) {
     const result = await this.authService.register(req);
@@ -15,7 +15,7 @@ export class AuthController {
     };
   }
 
-  @Get('/login')
+  @Post('/login')
   @HttpCode(200)
   async login(@Body() req: LoginRequest) {
     const result = await this.authService.login(req);
@@ -24,25 +24,25 @@ export class AuthController {
     };
   }
 
-  @Get('/register-organizer')
+  @Post('/register-organizer')
   @HttpCode(200)
   registerOrganizer() {
     return this.authService.registerOrganizer();
   }
 
-  @Get('/forgot-password')
+  @Post('/forgot-password')
   @HttpCode(200)
   forgotPassword() {
     return this.authService.forgotPassword();
   }
 
-  @Get('/reset-password')
+  @Post('/reset-password')
   @HttpCode(200)
   resetPassword() {
     return this.authService.resetPassword();
   }
 
-  @Get('/change-password')
+  @Post('/change-password')
   @HttpCode(200)
   changePassword() {
     return this.authService.changePassword();
