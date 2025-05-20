@@ -4,11 +4,9 @@ import { AuthService } from './auth.service';
 import { PrismaService } from 'src/common/prisma/prisma.service';
 import { PasswordService } from './password/password.service';
 import { TokenService } from './token/token.service';
-import { UserModule } from 'src/user/user.module';
 import { AuthMiddleware } from './auth.middleware';
 
 @Module({
-  imports: [UserModule],
   controllers: [AuthController],
   providers: [AuthService, PrismaService, PasswordService, TokenService],
   exports: [PasswordService, AuthService],

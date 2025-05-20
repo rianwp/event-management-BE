@@ -4,6 +4,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { ErrorFilter } from './error/error.filter';
 import { ValidationService } from './validation/validation.service';
 import { ConfigModule } from '@nestjs/config';
+import { MailService } from './mail/mail.service';
 
 @Global()
 @Module({
@@ -20,7 +21,8 @@ import { ConfigModule } from '@nestjs/config';
       provide: APP_FILTER,
       useClass: ErrorFilter,
     },
+    MailService,
   ],
-  exports: [PrismaService, ValidationService],
+  exports: [PrismaService, ValidationService, MailService],
 })
 export class CommonModule {}
