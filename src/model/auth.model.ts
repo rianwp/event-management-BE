@@ -3,7 +3,7 @@ export class RegisterRequest {
   email: string;
   password: string;
   phoneNumber: string;
-  profilePicture: string;
+  profilePicture?: string;
   referralCodeUsed?: string;
 }
 
@@ -31,7 +31,7 @@ export class RegisterOrganizerRequest {
   email: string;
   password: string;
   phoneNumber: string;
-  profilePicture: string;
+  profilePicture?: string;
   referralCodeUsed?: string;
   npwp: string;
   norek: string;
