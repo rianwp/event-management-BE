@@ -19,10 +19,7 @@ export class MailService {
       },
     });
 
-    this.templateDir = resolve(
-      __dirname,
-      '../static/templates/forgot-password.hbs',
-    );
+    this.templateDir = resolve(process.cwd(), '../static/templates/');
   }
 
   async renderTemplate(templateName: string, context: object) {
