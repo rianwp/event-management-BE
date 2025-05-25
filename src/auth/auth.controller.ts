@@ -8,7 +8,7 @@ import {
   RegisterRequest,
   ResetPasswordRequest,
 } from '../model/auth.model';
-import { Auth } from 'src/common/auth/auth.decorator';
+import { Auth } from '../common/auth/auth.decorator';
 import { Users } from '@prisma/client';
 
 @Controller('auth')
