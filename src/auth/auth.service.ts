@@ -53,14 +53,6 @@ export class AuthService {
     const referralCode = nanoid(10);
 
     const result = await this.prismaService.$transaction(async (tx) => {
-      const refererUser = await tx.users.findFirst({
-        where: { referralCode: referralCodeUsed },
-      });
-
-      if (!refererUser) {
-        throw new HttpException('Referral code is invalid', 400);
-      }
-
       const newUser = await tx.users.create({
         data: {
           fullName,
@@ -74,6 +66,14 @@ export class AuthService {
       });
 
       if (referralCodeUsed) {
+        const refererUser = await tx.users.findFirst({
+          where: { referralCode: referralCodeUsed },
+        });
+
+        if (!refererUser) {
+          throw new HttpException('Referral code is invalid', 400);
+        }
+
         await tx.referrals.create({
           data: {
             refererUserId: refererUser.id,

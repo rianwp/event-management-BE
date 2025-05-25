@@ -37,7 +37,7 @@ export class AuthValidation {
     password: this.passwordValidation,
     fullName: z.string().min(1).max(100),
     referralCodeUsed: z.string().optional(),
-    profilePicture: z.string().min(1),
+    profilePicture: z.string().optional(),
     phoneNumber: this.numberValidation,
   });
 
@@ -46,7 +46,7 @@ export class AuthValidation {
     password: this.passwordValidation,
     name: z.string().min(1).max(100),
     referralCodeUsed: z.string().optional(),
-    profilePicture: z.string().min(1),
+    profilePicture: z.string().optional(),
     phoneNumber: this.numberValidation,
     npwp: this.numberValidation,
     norek: this.numberValidation,
