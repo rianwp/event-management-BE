@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createTransport, Transporter } from 'nodemailer';
-import fs from 'fs/promises';
+import { readFile } from 'fs/promises';
 import Handlebars from 'handlebars';
 import { join, resolve } from 'path';
 
@@ -25,7 +25,7 @@ export class MailService {
   async renderTemplate(templateName: string, context: object) {
     const templatePath = join(this.templateDir, `${templateName}.hbs`);
 
-    const templateSource = (await fs.readFile(templatePath)).toString();
+    const templateSource = (await readFile(templatePath)).toString();
 
     const compiledTemplate = Handlebars.compile(templateSource);
 
