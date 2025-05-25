@@ -19,7 +19,7 @@ export class MailService {
       },
     });
 
-    this.templateDir = resolve(process.cwd(), '../static/templates/');
+    this.templateDir = resolve(process.cwd(), 'static/templates/');
   }
 
   async renderTemplate(templateName: string, context: object) {
